@@ -1,0 +1,97 @@
+<!DOCTYPE html>
+<html lang=en>
+<head>
+	<meta charset="utf-8">
+	<title>Yggdrasil Essense</title>
+	<link href="main.css" rel="stylesheet">
+</head>
+<body onload="ipl_ready()"><div class=screen>
+<header>
+<a href="./index.html">Yggdrasil Essense</a> / 
+Log View Example
+<hr>
+</header>
+<main>
+<h1 class="pagetitle">Log View Example</h1>
+<noscript><div class="warning">(JavaScript required)</div></noscript>
+<div id=mainboard class=main></div>
+</main>
+<footer>
+<hr>
+&copy; 2024-5 Yggdrasil Leaves, LLC.<br>
+</footer>
+<div id=modules>
+<script src="yges/ipl.js"></script>
+</div>
+<script><!--
+let modules=YgEs.ToQHT(document.getElementById('modules'));
+let mainboard=YgEs.ToQHT(document.getElementById('mainboard'));
+mainboard.Clear();
+let ipl_loading=YgEs.NewQHT({Target:mainboard,Tag:'div',Attr:{class:'warning'},Sub:['(IPL Loading...)']});
+
+async function ipl_ready(){
+
+	ipl_loading.Remove();
+
+	YgEs.InitFrontend(modules,mainboard);
+
+	// resources 
+	YgEs.LoadCSS('logview.css');
+	YgEs.LoadJS('yges/gui.js');
+	YgEs.LoadJS('yges/logger_view.js');
+	await YgEs.LoadSync().ToPromise();
+	YgEs.DisposeMonitor();
+
+	let log_show=true;
+	let log=YgEs.Log.CreateLocal('YgEsTest',YgEs.Log.LEVEL.TICK);
+	let logviewarea=YgEs.NewQHT({Target:mainboard,Tag:'div',Attr:{class:'yges_logview_area'}});
+	let logview=YgEs.LogView.SetUp(logviewarea,log,!log_show);
+
+	let ctrlpnl=YgEs.NewQHT({Target:mainboard,Tag:'div',Attr:{class:'yges_logview_ctrlpnl'}});
+
+	YgEs.GUI.Toggle(ctrlpnl,'Show',true,{
+		OffClass:'yges_logview_toggle_off',
+		OnClass:'yges_logview_toggle_on',
+		OnChanging:(side)=>{
+			log_show=side;
+			if(side)logview.Show();
+			else logview.Hide();
+			return true;
+		},
+	});
+	YgEs.GUI.Button(ctrlpnl,'Save',{
+		Class:'yges_logview_button',
+		OnClick:()=>{
+			YgEs.LocalSave(logview.GetText(),'log.txt','text/plain');
+		},
+	});
+	YgEs.GUI.Button(ctrlpnl,'Copy',{
+		Class:'yges_logview_button',
+		OnClick:()=>{
+			if(!navigator.clipboard){
+				log.Fatal('Clipboard not available');
+				return;
+			}
+			navigator.clipboard.writeText(logview.GetText());
+		},
+	});
+	YgEs.GUI.Button(ctrlpnl,'Clear',{
+		Class:'yges_logview_button',
+		OnClick:()=>{
+			logview.Clear();
+		},
+	});
+
+	log.Tick('TICK Log');
+	log.Trace('TRACE Log');
+	log.Debug('DEBUG Log');
+	log.Info('INFO Log');
+	log.Notice('NOTICE Log');
+	log.Warn('WARN Log');
+	log.Fatal('FATAL Log');
+	log.Crit('CRIT Log');
+	log.Alert('ALERT Log');
+	log.Emerg('EMERG Log');
+
+}
+//--></script></div></body></html>

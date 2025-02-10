@@ -1,0 +1,36 @@
+
+.yges_logview_window{
+	border:groove;
+	height:10em;
+	overflow:auto;
+}
+.yges_logview_ctrlpnl{
+	padding-top:0.2em;
+	padding-right:0.3em;
+	text-align:right;
+}
+.yges_logview_button{
+	font-size:125%;
+}
+
+.yges_logview_toggle_off{
+	font-size:125%;
+	background-color:#666;
+	font-color:#444;
+}
+.yges_logview_toggle_on{
+	font-size:125%;
+	background-color:#cc4;
+	font-color:#000;
+}
+
+.yges_logview_line_tick{color:#888;}
+.yges_logview_line_trace{color:#ccc;}
+.yges_logview_line_debug{color:#fff;}
+.yges_logview_line_info{color:#4df;}
+.yges_logview_line_notice{color:#cf4;}
+.yges_logview_line_warn{color:#fc4;}
+.yges_logview_line_fatal{color:#f64;}
+.yges_logview_line_crit{color:#f24;}
+.yges_logview_line_alert{color:#f2a;}
+.yges_logview_line_emerg{color:#c4f;}

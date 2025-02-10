@@ -1,0 +1,96 @@
+html, body { 
+	margin:0px;
+	padding:0px; 
+	background-color:#041808; 
+	color:white;
+	overflow:hidden;
+	height: 100vh;
+	width: 100vw;
+}
+h4{
+	margin-top: 0.7em;
+	margin-bottom: 0.3em;
+}
+
+@keyframes warning_blink{
+	0% {color:#202020}
+	100% {color:#ffffff}
+}
+.warning{
+	text-align: center;
+	font-size: 200%;
+	animation-delay: 2s;
+	animation-duration: 1s;
+	animation-name: warning_blink;
+	animation-iteration-count: infinite;
+	animation-direction: alternate-reverse;
+	animation-fill-mode: both;
+	animation-play-state: running;
+	animation-timing-function: ease-out;
+}
+
+.screen {
+	display:flex;
+	flex-direction:column;
+}
+
+header {
+	width: 100%;
+	height: 2em;
+	flex-shrink:0;
+}
+
+footer{
+	width: 100%;
+	height: 3.5em;
+	flex-shrink:0;
+}
+
+main{
+	flex-shrink:0;
+	height: calc(100vh - 6em);
+	overflow-y: auto;
+}
+
+.topmenu{
+	text-align: center;
+	font-size: 150%;
+}
+.pagetitle{
+	text-align: center;
+	font-size: 250%;
+}
+
+.table_center{
+	margin:auto;
+}
+
+.yges_loadmon_view{
+}
+.yges_loadmon_table{
+	margin:auto;
+	border-style:outset;
+	border-width:2px;
+}
+.yges_loadmon_thr{
+}
+.yges_loadmon_tdr{
+}
+.yges_loadmon_th_type{
+	border-style:outset;
+}
+.yges_loadmon_th_name{
+	border-style:outset;
+}
+.yges_loadmon_th_cond{
+	border-style:outset;
+}
+.yges_loadmon_td_type{
+	border-style:inset;
+}
+.yges_loadmon_td_name{
+	border-style:inset;
+}
+.yges_loadmon_td_cond{
+	border-style:inset;
+}

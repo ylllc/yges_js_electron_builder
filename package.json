@@ -1,0 +1,24 @@
+{
+  "name": "YggdrasilEssenseExamples",
+  "author": "Yggdrasil Leaves, LLC.",
+  "description": "Yggdrasil Essense for Electron",
+  "version": "0.0.0",
+  "main": "main.js",
+  "build": {
+    "asar": true,
+    "files": [
+		"src",
+		"main.js",
+		"preload.js"
+    ]
+  },
+  "scripts": {
+    "make": "electron-builder build"
+  },
+  "dependencies": {
+  },
+  "devDependencies": {
+    "electron": "^34.1.1",
+    "electron-builder": "^25.1.8"
+  }
+}
