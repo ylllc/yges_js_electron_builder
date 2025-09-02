@@ -38,8 +38,27 @@ and run YggdrasilEssenseExamples
 
 ### for Windows
 
+Can one touch building with build.bat  
 ** (Administrator privilage requred) **  
-Can one touch building with build.bat
+
+not Administrator, will happen an error  
+```
+errorOut=ERROR: Cannot create symbolic link  
+```
+can ignore, build operation is done  
+see dist/win-unpacked/  
+and can run YggdrasilEssenseExamples
+
+otherwise, put winCodeSign package to workingDir in manually   
+```
+workingDir=%USERPROFILE%\AppData\Local\electron-builder\Cache\winCodeSign
+```
+and see downloading log  
+```
+downloading     url=https://github.com/electron-userland/electron-builder-binaries/releases/download/winCodeSign-2.6.0/winCodeSign-2.6.0.7z
+```
+extract it, and put winCodeSign-2.6.0 to workingDir  
+
 
 ## Tips
 
